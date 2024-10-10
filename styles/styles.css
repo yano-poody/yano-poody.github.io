@@ -1,0 +1,237 @@
+/* styles/styles.css */
+
+/* Reset default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set html and body to full height */
+html,
+body {
+  height: 100%;
+}
+
+/* Main container */
+#main-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Card styles */
+.card {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Updated background colors for each card */
+#card1 {
+  background-color: #69e9ff; /* Poody Token */
+}
+
+#card2 {
+  background-color: #ffce6c; /* PoodyToons */
+}
+
+#card3 {
+  background-color: #62aadd; /* PoodyTech */
+}
+
+/* Card image */
+.card-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Ensures image is fully visible without cropping */
+  flex-grow: 1;
+  display: block;
+  margin: auto 0;
+}
+
+/* Description overlay */
+.description {
+  position: absolute;
+  height: 40%;
+  top: -100%; /* Start off-screen above the card */
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Half-transparent black */
+  color: #fff;
+  text-align: center;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 10px;
+  transition: top 0.3s ease-in-out;
+  z-index: 3;
+  pointer-events: none; /* Prevents click on description overlay on desktop */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically center */
+  align-items: center; /* Horizontally center */
+}
+
+/* Small-caps styling for titles */
+.description h2 {
+    font-variant: small-caps;
+    margin-bottom: 10px; /* Space between title and description */
+}
+
+/* Slide down the description on hover (desktop) */
+.card:hover .description {
+  top: 0; /* Slide down into view */
+}
+
+/* Description image */
+.desc-image {
+  position: absolute;
+  bottom: -100%; /* Start off-screen below the card */
+  left: 0;
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Ensures image is fully visible without cropping */
+  display: block;
+  z-index: 2;
+  transition: bottom 0.3s ease-in-out;
+}
+
+/* Slide up the description image on hover (desktop) */
+.card:hover .desc-image {
+  bottom: 0; /* Slide up into view */
+}
+
+/* Distinct Fonts for Description Overlays */
+
+/* Poody Token - Fun and Exciting Font */
+.token-description {
+  font-family: "Baloo 2", cursive;
+  font-size: 1.2em;
+}
+
+/* PoodyToons - Cute and Child-Friendly Font */
+.toons-description {
+  font-family: "Pacifico", cursive;
+  font-size: 1.2em;
+}
+
+/* PoodyTech - Technical and Software Development-Relevant Font */
+.tech-description {
+  font-family: "Roboto Mono", monospace;
+  font-size: 1.2em;
+}
+
+/* Hide desc-image on mobile */
+@media (max-width: 600px) {
+  .desc-image {
+    display: none;
+  }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+  #main-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .card {
+    width: 100%;
+    height: calc(100vh / 3);
+  }
+
+  /* Description overlay hidden by default on mobile */
+  .description {
+    top: -100%; /* Hide description initially */
+    height: 100%;
+    border-radius: 0;
+    pointer-events: auto; /* Allow clicks on description overlay on mobile */
+  }
+
+  /* Active state for description overlay */
+  .description.active {
+    top: 0; /* Show description overlay */
+  }
+
+  /* Description image pops up on tap */
+  .desc-image {
+    display: block;
+    bottom: -100%; /* Hide description image initially */
+    transition: bottom 0.3s ease-in-out;
+  }
+
+  .desc-image.active {
+    bottom: 0; /* Show description image */
+  }
+}
+
+/* Learn more button styles */
+.learn-more {
+    background-color: transparent;
+    border: 5px solid white;
+    color: white;
+    padding: 8px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none;
+    border-radius: 8px; /* Slightly rounded corners */
+}
+
+/* SVG arrow icon styles */
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+    fill: white;
+    transition: transform 0.3s;
+}
+
+/* Fade overlay */
+#fade-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Active state for fade overlay */
+#fade-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Hover effects for desktop and mobile */
+@media (min-width: 601px) {
+    .learn-more:hover {
+        background-color: white;
+        color: #69e9ff; /* Example hover color */
+    }
+    
+    .learn-more:hover .arrow-icon {
+        transform: translateX(4px);
+    }
+}
+
+@media (max-width: 600px) {
+    .learn-more:hover {
+        background-color: rgba(255, 255, 255, 0.2); /* Slightly visible background */
+    }
+    
+    .learn-more:hover .arrow-icon {
+        transform: translateX(4px);
+    }
+}
