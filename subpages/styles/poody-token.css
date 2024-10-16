@@ -54,6 +54,10 @@ html {
   background-color: #ffcccb; /* Slightly pink background */
 }
 
+#section3 {
+  background-color: #ffea95; /* Slightly pink background */
+}
+
 /* Content wrapper for desktop */
 .content-wrapper {
   display: flex;
@@ -68,7 +72,7 @@ html {
 .image-content,
 .text-content {
   width: 50%;
-  margin: 0;
+  margin: 0px 10px;
   padding: 0;
   position: relative;
 }
@@ -103,8 +107,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start; /* Left align text */
-  padding-left: 20px;
+  align-items: center; /* Left align text */
 }
 
 /* Text styles */
@@ -159,6 +162,79 @@ header {
   width: auto;
 }
 
+.icons-container {
+  display: flex;
+  justify-content: center; /* Center the icons horizontally */
+  align-items: center;
+  margin-top: 20px; /* Space between the text and icons */
+}
+
+/* Styles for the icons */
+.icons-container a {
+  margin: 0 10px; /* Space between the icons */
+}
+
+.icons-container img {
+  width: auto;
+  height: 5vw;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.icons-container a:hover img {
+  outline: 2px solid #ffffff; /* Or any style to indicate focus */
+}
+
+.title {
+  font-family: 'Shadows Into Light', cursive;
+}
+
+.description {
+  font-family: 'Denk One', sans-serif;
+}
+
+/* Info Grid Container Styles */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-gap: 20px; /* Space between items */
+  align-items: start; /* Align items at the top */
+  justify-items: center; /* Center items horizontally */
+  margin-top: 20px; /* Space above the grid */
+}
+
+/* Info Item Styles */
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Remove fixed width to allow the container to expand */
+  width: 20vw;
+  /* min-width: 200px; Set a minimum width */
+}
+
+/* Title Styles */
+.title {
+  background-color: #ffffff; /* Adjust background color as needed */
+  padding: 20px;
+  border-radius: 50px; /* Fully rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Drop shadow */
+  width: 100%; /* Fill the width of the info-item */
+  /* height: 100px; Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Description Styles */
+.description {
+  margin-top: 10px; /* Space between title and description */
+  font-size: 3em; /* Adjust font size as needed */
+  text-align: center;
+  width: 100%;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   /* Adjust header for mobile */
@@ -206,12 +282,42 @@ header {
     height: 75%; /* Image takes 75% of the container height */
     max-height: 75%;
   }
+
+  .icons-container img {
+    height: 10vw;
+  }
+
+  .info-grid {
+  grid-template-columns: repeat(2, 1fr); /* Two columns */
+}
+
+.info-item {
+  /* Remove fixed width to allow the container to expand */
+  width: 40vw;
+  /* min-width: 200px; Set a minimum width */
+}
+
+.description {
+  margin-top: 10px; /* Space between title and description */
+  font-size: 1em; /* Adjust font size as needed */
+}
+
+.title {
+  padding: 10px;
+  border-radius: 50px; /* Fully rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Drop shadow */
+  width: 100%; /* Fill the width of the info-item */
+  /* height: 100px; Fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 }
 
 /* Remove gaps */
-.content-wrapper,
 .text-content,
-.image-content {
+.image-content .content-wrapper {
   margin: 0;
   padding: 0;
 }
